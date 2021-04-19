@@ -4,19 +4,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-double **read_data(char *filename, int *n_rows, int *n_cols) {
-    FILE *fp = fopen(filename, "r");
-    fscanf(fp, "%d &d", n_rows, n_cols);
-    double **data = malloc(*n_rows * sizeof(double *));
-    for (int i = 0; i < *n_rows; i++) {
-        data[i] = malloc(*n_cols * sizeof(double));
+struct Matrix {
+    int n_rows;
+    int n_cols;
+    double **buf;
+};
+
+typedef struct Matrix Matrix;
+
+Matrix matrix_new(int n_rows, int n_cols) {
+    Matrix matrix;
+    matrix.n_rows = n_rows;
+    matrix.n_cols = n_cols;
+    double **buf = malloc(matrix.n_rows * sizeof(double *));
+    for (int i = 0; i < matrix.n_rows; i++) {
+        buf[i] = malloc(matrix.n_cols * sizeof(double));
     }
-    for (int i = 0; i < *n_rows; i++) {
-        for (int j = 0; j < *n_cols; j++) {
-            fscanf(fp, "%lf", &data[i][j]);
+    matrix.buf = buf;
+    return matrix;
+}
+
+Matrix read_data(char *filename) {
+    FILE *fp = fopen(filename, "r");
+    int n_rows, n_cols;
+    fscanf(fp, "%d %d", &n_rows, &n_cols);
+    Matrix matrix = matrix_new(n_rows, n_cols);
+    for (int i = 0; i < matrix.n_rows; i++) {
+        for (int j = 0; j < matrix.n_cols; j++) {
+            fscanf(fp, "%lf", &matrix.buf[i][j]);
         }
     }
-    return data;
+    return matrix;
 }
 
 #endif //PARALLEL_CMP_C_MATMUL_H
