@@ -1,9 +1,8 @@
-//
-// Created by Ruoyi on 2021-04-18.
-//
-
 #ifndef PARALLEL_CMP_C_MATMUL_H
 #define PARALLEL_CMP_C_MATMUL_H
+
+#include <stdio.h>
+#include <stdlib.h>
 
 double **read_data(char *filename, int *n_rows, int *n_cols) {
     FILE *fp = fopen(filename, "r");

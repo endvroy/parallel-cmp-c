@@ -1,6 +1,3 @@
-//
-// Created by ruoyi on 4/4/21.
-//
 #include <stdio.h>
 #include <stdlib.h>
 #include "histogram.h"
