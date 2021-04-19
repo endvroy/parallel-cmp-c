@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <omp.h>
 
+#include "histogram.h"
+
 int *calc_partial_histogram(double data[], int n_data, int *histogram, int n_bins) {
     int thread_cnt = omp_get_num_threads();
     int data_interval = n_data / thread_cnt;
@@ -40,17 +42,6 @@ int *calc_histogram(double data[], int n_data, int n_bins) {
         }
     }
     return histogram;
-}
-
-// read data from file
-double *read_data(char *filename, int *n_data) {
-    FILE *fp = fopen(filename, "r");
-    fscanf(fp, "%d", n_data);
-    double *data = malloc(*n_data * sizeof(double));
-    for (int i = 0; i < *n_data; i++) {
-        fscanf(fp, "%lf", data + i);
-    }
-    return data;
 }
 
 

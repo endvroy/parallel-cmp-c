@@ -3,6 +3,7 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
+#include "histogram.h"
 
 int *calc_histogram(double data[], int n_data, int n_bins) {
     int *histogram = calloc(n_bins, sizeof(int));
@@ -12,16 +13,6 @@ int *calc_histogram(double data[], int n_data, int n_bins) {
         histogram[bin_index]++;
     }
     return histogram;
-}
-
-double *read_data(char *filename, int *n_data) {
-    FILE *fp = fopen(filename, "r");
-    fscanf(fp, "%d", n_data);
-    double *data = malloc(*n_data * sizeof(double));
-    for (int i = 0; i < *n_data; i++) {
-        fscanf(fp, "%lf", data + i);
-    }
-    return data;
 }
 
 
