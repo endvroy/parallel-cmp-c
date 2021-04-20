@@ -13,3 +13,4 @@ add_executable(quicksort-parallel quicksort.h quicksort-parallel.c)
 
 add_executable(matmul-serial matmul.h matmul-serial.c)
 add_executable(matmul-parallel matmul.h matmul-parallel.c)
+add_executable(empty empty.c)
