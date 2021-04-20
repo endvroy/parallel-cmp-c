@@ -14,10 +14,9 @@ int *calc_histogram(double data[], int n_data, int n_bins) {
 
 
 int main(int argc, char *argv[]) {
-    int n_bins = atoi(argv[1]);
-    int n_threads = atoi(argv[2]);
+    char *filename = argv[1];
+    int n_bins = 20;
     int n_data = 0;
-    char *filename = argv[3];
     double *data = read_data(filename, &n_data);
     int *histogram = calc_histogram(data, n_data, n_bins);
     for (int i = 0; i < n_bins; i++) {

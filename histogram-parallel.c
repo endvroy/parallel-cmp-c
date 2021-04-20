@@ -46,12 +46,13 @@ int *calc_histogram(double data[], int n_data, int n_bins) {
 
 
 int main(int argc, char *argv[]) {
-    int n_bins = atoi(argv[1]);
+    char *filename = argv[1];
     int n_threads = atoi(argv[2]);
+    int n_bins = 20;
     omp_set_num_threads(n_threads); // set num of threads
     omp_set_dynamic(0); // disable dynamic adjustment of num of threads
     int n_data = 0;
-    char *filename = argv[3];
+
     // read data from file
     double *data = read_data(filename, &n_data);
     // calc histogram
