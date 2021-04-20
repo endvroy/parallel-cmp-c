@@ -37,4 +37,20 @@ Matrix read_data(char *filename) {
     return matrix;
 }
 
+void print_matrix(Matrix m) {
+    printf("Matrix(%d * %d)\n", m.n_rows, m.n_cols);
+    puts("[");
+    for (int row = 0; row < m.n_rows; row++) {
+        putchar('[');
+        for (int col = 0; col < m.n_cols; col++) {
+            printf("%f", m.buf[row][col]);
+            if (col != m.n_cols - 1) {
+                printf(", ");
+            }
+        }
+        puts("],");
+    }
+    puts("]");
+}
+
 #endif //PARALLEL_CMP_C_MATMUL_H
