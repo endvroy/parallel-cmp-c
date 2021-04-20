@@ -27,8 +27,6 @@ int main(int argc, char *argv[]) {
 
     int n_data = 0;
     int *data = read_data(filename, &n_data);
-    printf("%d\n", n_data);
-    fflush(stdout);
     quicksort(data, n_data);
     for (int i = 0; i < n_data; i++) {
         printf("%d ", data[i]);
