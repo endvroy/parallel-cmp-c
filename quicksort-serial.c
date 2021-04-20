@@ -15,6 +15,13 @@ void quicksort(int arr[], int arr_len) {
     quicksort(arr + b, arr_len - b);
 }
 
-int main() {
-
+int main(int argc, char *argv[]) {
+    char *filename = argv[1];
+    int n_data = 0;
+    int *data = read_data(filename, &n_data);
+    quicksort(data, n_data);
+    for (int i = 0; i < n_data; i++) {
+        printf("%d ", data[i]);
+    }
+    return 0;
 }
