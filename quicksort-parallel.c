@@ -13,9 +13,9 @@ void quicksort(int arr[], int arr_len) {
     int a, b;
     three_way_partition(arr, arr_len, p_idx, &a, &b);
 
-#pragma omp task
+#pragma omp task shared(arr)
     quicksort(arr, a);
-#pragma omp task
+#pragma omp task shared(arr)
     quicksort(arr + b, arr_len - b);
 }
 
