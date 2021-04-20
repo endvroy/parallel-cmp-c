@@ -27,7 +27,6 @@ int *calc_partial_histogram(double data[], int n_data, int *histogram, int n_bin
 int *calc_histogram(double data[], int n_data, int n_bins) {
     int *histogram = calloc(n_bins, sizeof(int)); // the global histogram
     int thread_cnt = omp_get_num_threads();
-    int data_interval = n_data / thread_cnt;
 #pragma omp parallel num_threads(thread_cnt)
     {
         // each thread calculates part of the histogram
