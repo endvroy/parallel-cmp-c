@@ -13,3 +13,17 @@ Matrix matmul(Matrix a, Matrix b) {
     }
     return c;
 }
+
+int main(int argc, char *argv[]) {
+    char *filename_a = argv[1];
+    char *filename_b = argv[2];
+
+    // read data from file
+    Matrix a = read_data(filename_a);
+    Matrix b = read_data(filename_b);
+    // calc histogram
+    Matrix c = matmul(a, b);
+    // output
+    print_matrix(c);
+    return 0;
+}
